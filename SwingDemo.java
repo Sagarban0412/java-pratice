@@ -1,62 +1,50 @@
 import javax.swing.*;
 import java.awt.event.*;
-public class SwingDemo {
- SwingDemo(){
- JFrame jframe=new JFrame("This is a simple JFrame App");
- jframe.setSize(400, 300);
- jframe.setLocationRelativeTo(null);
- jframe.getContentPane().setLayout(null);
- jframe.setVisible(true);
- 
- JLabel lbl1=new JLabel("First Number:");
- lbl1.setBounds(20, 10, 100, 10);
- jframe.add(lbl1);
- 
- JTextField txt1=new JTextField();
- txt1.setBounds(120, 10, 120, 20);
- jframe.add(txt1);
- 
- JLabel lbl2=new JLabel("Second Number:");
- lbl2.setBounds(20, 50, 100, 10);
- jframe.add(lbl2);
- 
- JTextField txt2=new JTextField();
- txt2.setBounds(120, 50, 120, 20);
- jframe.add(txt2);
- 
- JLabel lbl3=new JLabel("Result: ");
- //lbl3.setText("Result: ");
 
- lbl3.setBounds(20,80,100,30);
- jframe.add(lbl3);
- 
- JButton btn=new JButton("Calculate");
- btn.setBounds(100, 120, 100, 30);
- jframe.add(btn); 
- 
- btn.addActionListener(new ActionListener() {
- public void actionPerformed(ActionEvent ae) {
- String first1=txt1.getText().toString();
- String second1=txt2.getText().toString();
- int a,b,c;
- a=Integer.parseInt(first1);
- b=Integer.parseInt(second1);
- c=a+b;
- lbl3.setText("Result: "+c);
- 
-//JOptionPane.showMessageDialog(null, "Addition= "+c);
- 
- }
- });
- }
- 
- 
-public static void main(String[] args) {
- SwingUtilities.invokeLater(new Runnable() {
-public void run() {
-new SwingDemo();
-}
-});
- 
- }
+public class SwingDemo extends JFrame {
+    public static void main(String[] args) {
+        JFrame jFrame = new JFrame("SwingDemo");
+
+        JLabel l1 = new JLabel("Enter the First number:");
+        l1.setBounds(50, 20, 200, 20);
+        jFrame.add(l1);
+
+        JTextField t1 = new JTextField();
+        t1.setBounds(50, 40, 120, 20);
+        jFrame.add(t1);
+
+        JLabel l2 = new JLabel("Enter the Second number:");
+        l2.setBounds(50, 70, 200, 20);
+        jFrame.add(l2);
+
+        JTextField t2 = new JTextField();
+        t2.setBounds(50, 90, 120, 20);
+        jFrame.add(t2);
+
+        JButton b1 = new JButton("Click me!");
+        b1.setBounds(50, 120, 100, 30);
+        jFrame.add(b1);
+
+        JTextField t3= new JTextField();
+        t3.setBounds(50, 150, 120, 20);
+        jFrame.add(t3);
+
+        jFrame.setSize(400, 300);
+        jFrame.setLayout(null); // Set layout manager to null for absolute positioning
+        jFrame.setVisible(true);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setLocationRelativeTo(null);
+
+        b1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                int a=Integer.parseInt(t1.getText());
+                int b=Integer.parseInt(t2.getText());
+                int c= a+b;
+
+                t3.setText(Integer.toString(c));
+
+            }
+        });
+        
+    }
 }
